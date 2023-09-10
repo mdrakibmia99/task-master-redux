@@ -3,7 +3,10 @@ import Modal from "../ui/Modal";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
     const { register, handleSubmit ,reset} = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+         onCancel()
+    };
     const onCancel=()=>{
      reset();
      setIsOpen(false)
