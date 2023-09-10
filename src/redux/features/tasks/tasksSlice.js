@@ -1,7 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState= {
-    tasks:[],
+    tasks:[{
+        id: 1,
+        status: 'pending',
+        title: 'Programming',
+        description:
+          'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
+        date: '2023-08-28',
+        assignedTo: 'Md Rakib mia',
+        priority: 'high',
+      },
+      {
+        id: 2,
+        status: 'pending',
+        title: 'Programming',
+        description:
+          'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
+        date: '2023-08-28',
+        assignedTo: 'Md Rakib mia',
+        priority: 'high',
+      },
+      {
+        id: 3,
+        status: 'pending',
+        title: 'Programming',
+        description:
+          'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
+        date: '2023-08-28',
+        assignedTo: 'Md Rakib mia',
+        priority: 'high',
+      },
+    ],
 }
 const tasksSlice = createSlice({
     name:"tasksSlice",
@@ -15,12 +45,20 @@ const tasksSlice = createSlice({
             const lastItem= state.tasks.at(-1);
             state.tasks.push({id:lastItem.id+1,status:"pending",...payload})
         }
-      }
+      },
+      removeTask:(state,{payload})=>{
+        state.tasks.filter(item=>item.id !== payload)
+       },
+       updateStatus:(state,{payload})=>{
+  
+          const target= state.tasks.find(task=> task.id===payload.id);
+          console.log(target,"target")
+          target.status=payload.updatedStatus;
+       }
      },
-     removeTask:(state,{payload})=>{
-      state.tasks.filter(item=>item.id !== payload)
-     }
+     
+
 })
-export const {addTask} = tasksSlice.actions;
+export const {addTask,removeTask,updateStatus} = tasksSlice.actions;
 
 export default tasksSlice.reducer;

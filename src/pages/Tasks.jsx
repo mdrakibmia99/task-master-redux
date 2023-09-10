@@ -42,7 +42,7 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-              {tasks.map(task=> <TaskCard key={task.id}/>)}
+              {tasks.map(task=> <TaskCard key={task.id} task={task}/>)}
              
             </div>
           </div>
@@ -54,7 +54,7 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-            {tasks.map(task=> <TaskCard key={task.id}/>)}
+            {tasks.map(task=> <TaskCard key={task.id} task={task}/>)}
             </div>
           </div>
           <div className="relative h-[800px] overflow-auto">
@@ -65,7 +65,7 @@ const Tasks = () => {
               </p>
             </div>
             <div className="space-y-3">
-            {tasks.map(task=> <TaskCard key={task.id}/>)}
+            {tasks.map(task=> <TaskCard key={task.id} task={task}/>)}
             </div>
           </div>
         </div>
