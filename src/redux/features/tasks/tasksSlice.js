@@ -13,7 +13,7 @@ const initialState= {
       },
       {
         id: 2,
-        status: 'pending',
+        status: 'running',
         title: 'Programming',
         description:
           'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
@@ -23,7 +23,7 @@ const initialState= {
       },
       {
         id: 3,
-        status: 'pending',
+        status: 'done',
         title: 'Programming',
         description:
           'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
@@ -47,7 +47,7 @@ const tasksSlice = createSlice({
         }
       },
       removeTask:(state,{payload})=>{
-        state.tasks.filter(item=>item.id !== payload)
+        state.tasks=state.tasks.filter(item=>item.id != payload)
        },
        updateStatus:(state,{payload})=>{
   
