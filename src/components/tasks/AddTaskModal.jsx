@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import Modal from "../ui/Modal";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit ,reset} = useForm();
     const onSubmit = data => console.log(data);
+    const onCancel=()=>{
+     reset();
+     setIsOpen(false)
+    }
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Programming"}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -78,7 +82,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
         </div>
         <div className="flex gap-3 justify-end">
           <button
-           
+            onClick={()=>onCancel()}
             type="button"
             className="btn btn-danger "
           >
