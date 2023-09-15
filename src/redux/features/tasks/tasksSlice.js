@@ -8,17 +8,7 @@ const initialState= {
         description:
           'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
         date: '2023-08-28',
-        assignedTo: 'Md Rakib mia',
-        priority: 'high',
-      },
-      {
-        id: 2,
-        status: 'running',
-        title: 'Programming',
-        description:
-          'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
-        date: '2023-08-28',
-        assignedTo: 'Md Rakib mia',
+        assignedTo: 'Md Rakib Mia',
         priority: 'high',
       },
       {
@@ -28,10 +18,11 @@ const initialState= {
         description:
           'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
         date: '2023-08-28',
-        assignedTo: 'Md Rakib mia',
+        assignedTo: 'Hasna Hena',
         priority: 'high',
       },
     ],
+    userTask:[]
 }
 const tasksSlice = createSlice({
     name:"tasksSlice",
@@ -54,6 +45,9 @@ const tasksSlice = createSlice({
           const target= state.tasks.find(task=> task.id===payload.id);
           console.log(target,"target")
           target.status=payload.updatedStatus;
+       },
+       userTask:(state,{payload})=>{
+             state.userTask.filter(item=> item.assignedTo === payload)
        }
      },
      
