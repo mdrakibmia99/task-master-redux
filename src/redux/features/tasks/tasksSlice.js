@@ -36,13 +36,13 @@ const tasksSlice = createSlice({
           console.log(target,"target")
           target.status=payload.updatedStatus;
        },
-       userTask:(state,{payload})=>{
+       setUserTask:(state,{payload})=>{
         state.userTasks=state.tasks.filter(item=> item.assignedTo === payload)
        }
      },
      
 
 })
-export const {addTask,removeTask,updateStatus,userTask} = tasksSlice.actions;
+export const {addTask,removeTask,updateStatus,setUserTask} = tasksSlice.actions;
 
 export default tasksSlice.reducer;
