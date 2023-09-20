@@ -7,6 +7,7 @@ import Profile from '../pages/Profile';
 import PrivateRoute from '../components/layouts/PrivateRoute';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Archive from '../pages/Archive';
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
       {
         path: '/settings',
         element: <Settings />,
+      },
+      {
+        path: '/archive',
+        element: <Archive />,
       },
       {
         path: '/profile',
