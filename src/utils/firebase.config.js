@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDZqrn0lhjbOOrAmprYZorM2cFHwVK3lWQ",
-  authDomain: "taskmaster-redux-ccdf4.firebaseapp.com",
-  projectId: "taskmaster-redux-ccdf4",
-  storageBucket: "taskmaster-redux-ccdf4.appspot.com",
-  messagingSenderId: "599750849878",
-  appId: "1:599750849878:web:e42ef9eb01c6c9699e92f7"
+  apiKey: "AIzaSyB_DbfbMxPG72KsMye5j2bKxeY7OY6eefA",
+  authDomain: "task-master-redux-20116.firebaseapp.com",
+  projectId: "task-master-redux-20116",
+  storageBucket: "task-master-redux-20116.appspot.com",
+  messagingSenderId: "770659146377",
+  appId: "1:770659146377:web:e32feca7367d1b20c74458"
 };
 
 // Initialize Firebase
