@@ -12,8 +12,11 @@ const initialState={
 
 export const createUser=createAsyncThunk("userSlice/createUser",async({email,password})=>{
   const data=await createUserWithEmailAndPassword(auth,email,password);
-  console.log(data);
-  return ;
+  console.log(data,"login data");
+  return {
+    name:data.user.displayName,
+    email:data.user.email
+  };
 })
 const usersSlice=createSlice({
     name:"usersSlice",
