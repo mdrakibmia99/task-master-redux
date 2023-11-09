@@ -3,8 +3,8 @@ import loginImage from '../assets/image/login.svg';
 import { useForm, useWatch } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../redux/features/users/usersSlice';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 const Register = () => {
   const { handleSubmit, register, control } = useForm();
   const password = useWatch({ control, name: 'password' });
@@ -12,7 +12,8 @@ const Register = () => {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
   const dispatch=useDispatch()
-
+  const {isError,error}=useSelector((state)=>state.userSlice)
+  console.log(isError,error)
   useEffect(() => {
     if (
       password !== undefined &&
@@ -28,10 +29,12 @@ const Register = () => {
   }, [password, confirmPassword]);
 
   const onSubmit = ({ name, email, password }) => {
-    // Email Password signup
-    // console.log(name, email, password);
+
     dispatch(createUser({email,password,name}))
   };
+  useEffect(()=>{
+    toast.error(error)
+  },[error,isError])
 
   const handleGoogleLogin = () => {
     // Google Login
@@ -39,6 +42,7 @@ const Register = () => {
 
   return (
     <div className="flex max-w-7xl mx-auto h-screen items-center">
+      <Toaster/>
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>

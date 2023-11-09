@@ -21,6 +21,8 @@ export const createUser=createAsyncThunk("userSlice/createUser",async({email,pas
     email:data.user.email
   };
 })
+
+
 const usersSlice=createSlice({
     name:"usersSlice",
     initialState,
