@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { createUser } from '../redux/features/users/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
+import { onAuthStateChanged } from 'firebase/auth';
+import auth from '../utils/firebase.config';
+import Loading from '../components/layouts/Loading';
 const Register = () => {
   const { handleSubmit, register, control } = useForm();
   const password = useWatch({ control, name: 'password' });
@@ -12,8 +15,10 @@ const Register = () => {
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(true);
   const dispatch=useDispatch()
-  const {isError,error}=useSelector((state)=>state.userSlice)
-  console.log(isError,error)
+  const {isError,error,isLoading,email}=useSelector((state)=>state.userSlice)
+
+  // const [isGoogleSignIn,setIsGoogleSignIn]=useState(false);
+  // console.log(isError,error)
   useEffect(() => {
     if (
       password !== undefined &&
@@ -28,17 +33,41 @@ const Register = () => {
     }
   }, [password, confirmPassword]);
 
+  const [loading,setLoading]=useState(false)
   const onSubmit = ({ name, email, password }) => {
-
-    dispatch(createUser({email,password,name}))
+    dispatch(createUser({email,password,name,isGoogleSignIn:false}))
   };
   useEffect(()=>{
-    toast.error(error)
-  },[error,isError])
+    if(error && isError){
 
+      toast.error(error)
+    }
+  },[error,isError])
+  useEffect(()=>{
+    if(!isLoading && email){
+      navigate("/")
+    }
+  },[email,isLoading,navigate])
+ 
   const handleGoogleLogin = () => {
-    // Google Login
+
+    dispatch(createUser({isGoogleSignIn:true }))
   };
+  useEffect(()=>{
+    setLoading(true)
+    onAuthStateChanged(auth,(user)=>{
+    if(user){
+      setLoading(false)
+      navigate('/')
+    }
+    setLoading(false)
+    
+    })
+   },[])
+ 
+  if(loading){
+    return <Loading/>
+  }
 
   return (
     <div className="flex max-w-7xl mx-auto h-screen items-center">

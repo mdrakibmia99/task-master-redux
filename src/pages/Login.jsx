@@ -1,22 +1,57 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import loginImage from '../assets/image/login.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser, loginUser } from '../redux/features/users/usersSlice';
+import toast, { Toaster } from 'react-hot-toast';
+import auth from '../utils/firebase.config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import Loading from '../components/layouts/Loading';
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-
+  const dispatch=useDispatch()
+  const {isError,error}=useSelector((state)=>state.userSlice)
+  const [loading,setLoading]=useState(false)
   const onSubmit = ({ email, password }) => {
-    console.log(email,password)
+    dispatch(loginUser({
+      email,password
+    }))
 
-    console.log(email, password);
+    
   };
 
+   
+   useEffect(()=>{
+    setLoading(true)
+    onAuthStateChanged(auth,(user)=>{
+    if(user){
+      setLoading(false)
+      navigate('/')
+    }
+    setLoading(false)
+    
+    })
+   },[])
+ 
+  if(loading){
+    return <Loading/>
+  }
   const handleGoogleLogin = () => {
-    //  Google Login
-  };
+    
+    dispatch(createUser({isGoogleSignIn:true }))
 
+  };
+  if(error && isError){
+    toast.error(error)
+  }
+
+
+console.log(auth,"auth data")
   return (
     <div className="flex max-w-7xl h-screen items-center mx-auto">
+      <Toaster/>
       <div className="w-1/2">
         <img src={loginImage} className="h-full w-full" alt="" />
       </div>
