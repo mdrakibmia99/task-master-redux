@@ -13,6 +13,7 @@ const Tasks = () => {
   const {data:tasks}=useGetTasksQuery();
   console.log(tasks,"tasksss")
   const pendingTasks = tasks?.filter((item) => item.status == 'pending');
+  
   const runningTasks = tasks?.filter((item) => item.status == 'running');
   const doneTasks = tasks?.filter((item) => item.status == 'done');
 
@@ -62,7 +63,7 @@ const Tasks = () => {
               </div>
               <div className="space-y-3">
                 {pendingTasks?.map((item) => (
-                  <TaskCard key={item.id} task={item} />
+                  <TaskCard key={item._id} task={item} />
                 ))}
               </div>
             </div>
