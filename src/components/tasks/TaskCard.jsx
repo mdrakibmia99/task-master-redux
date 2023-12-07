@@ -1,16 +1,16 @@
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { useDispatch } from 'react-redux';
-import { removeTask, updateStatus } from '../../redux/features/tasks/tasksSlice';
+// import { useDispatch } from 'react-redux';
+// import { removeTask, updateStatus } from '../../redux/features/tasks/tasksSlice';
 import { useDeleteTaskMutation, useUpdateTaskMutation } from '../../redux/features/tasks/taskAPI';
 
 
 const TaskCard = ({task}) => {
   const [deleteTask]=useDeleteTaskMutation()
-  console.log(task,"current task now")
- const dispatch=useDispatch();
+  // (task,"current task now")
+//  const dispatch=useDispatch();
  const [updateTask,{data,error}]=useUpdateTaskMutation()
- console.log(data,"rakib test1")
- console.log(error,"rakib test2")
+ // console.log(data,"rakib test1")
+ // console.log(error,"rakib test2")
  var updatedStatus;
 if(task.status==="pending"){
   updatedStatus="running";

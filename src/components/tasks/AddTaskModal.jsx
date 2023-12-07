@@ -9,8 +9,8 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
     const { register, handleSubmit ,reset} = useForm();
     // const dispatch=useDispatch();
     const [addTask,{data,error}]=useAddTaskMutation()
-    console.log(data)
-    console.log(error)
+    // // console.log(data)
+    // // console.log(error)
     const onSubmit = data => {
         //  dispatch(addTask(data))
          addTask({...data,status:'pending'})

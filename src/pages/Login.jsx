@@ -48,7 +48,7 @@ const Login = () => {
   }
 
 
-console.log(auth,"auth data")
+// console.log(auth,"auth data")
   return (
     <div className="flex max-w-7xl h-screen items-center mx-auto">
       <Toaster/>

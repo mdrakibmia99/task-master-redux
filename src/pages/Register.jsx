@@ -18,7 +18,7 @@ const Register = () => {
   const {isError,error,isLoading,email}=useSelector((state)=>state.userSlice)
 
   // const [isGoogleSignIn,setIsGoogleSignIn]=useState(false);
-  // console.log(isError,error)
+  // // console.log(isError,error)
   useEffect(() => {
     if (
       password !== undefined &&

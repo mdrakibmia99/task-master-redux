@@ -12,7 +12,7 @@ const Tasks = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { tasks } = useSelector((state) => state.taskSlice);
   const {data:tasks}=useGetTasksQuery();
-  console.log(tasks,"tasksss")
+  // console.log(tasks,"tasksss")
   const pendingTasks = tasks?.filter((item) => item.status == 'pending');
 
   const runningTasks = tasks?.filter((item) => item.status == 'running');
@@ -77,7 +77,7 @@ const Tasks = () => {
               </div>
               <div className="space-y-3">
                 {runningTasks?.map((item) => (
-                  <TaskCard key={item.id} task={item} />
+                  <TaskCard key={item._id} task={item} />
                 ))}
               </div>
             </div>
@@ -90,7 +90,7 @@ const Tasks = () => {
               </div>
               <div className="space-y-3">
                 {doneTasks?.map((item) => (
-                  <TaskCard key={item.id} task={item} />
+                  <TaskCard key={item._id} task={item} />
                 ))}
               </div>
             </div>

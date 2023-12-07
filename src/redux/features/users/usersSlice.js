@@ -24,7 +24,7 @@ export const createUser = createAsyncThunk("userSlice/createUser", async ({ emai
     })
     
   }
-  console.log(data, "login data");
+  // console.log(data, "login data");
   return {
     name: data.user.displayName,
     email: data.user.email
@@ -35,7 +35,7 @@ export const createUser = createAsyncThunk("userSlice/createUser", async ({ emai
 
 export const loginUser = createAsyncThunk("userSlice/loginUser", async ({ email, password }) => {
   const data = await signInWithEmailAndPassword(auth, email, password);
-  console.log(data,"after login")
+  // console.log(data,"after login")
   return {
     name: data.user.displayName,
     email: data.user.email

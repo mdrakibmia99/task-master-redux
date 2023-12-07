@@ -33,7 +33,7 @@ const tasksSlice = createSlice({
        updateStatus:(state,{payload})=>{
   
           const target= state.tasks.find(task=> task.id===payload.id);
-          console.log(target,"target")
+          // console.log(target,"target")
           target.status=payload.updatedStatus;
        },
        setUserTask:(state,{payload})=>{
