@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
  const baseApi = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://task-master-redux-backend.vercel.app' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://task-master-redux-backend.onrender.com/' }),
     tagTypes:['Tasks'],
     endpoints: () => ({}),
 })
